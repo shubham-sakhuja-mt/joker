@@ -1,0 +1,27 @@
+general:
+  name: joker
+
+components:
+  - name: web
+    type: stateless
+    containers:
+      - dir: .
+        readyCheck:
+          httpGet:
+            port: 8080
+            path: /health
+    expose:
+      - servicePort: 80
+        containerPort: 8080
+        accessible-from:
+          - minikube
+
+env-types:
+  - type-regex: '(?!prod).*'
+    modifier:
+      components:
+        - name: .*
+          containers:
+            - name: .*
+              envVars:
+                DEBUG: 'on'
