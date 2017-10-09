@@ -8,13 +8,18 @@ components:
       - dir: .
         readyCheck:
           httpGet:
-            port: 8080
+            port: 80
             path: /health
     expose:
       - servicePort: 80
-        containerPort: 8080
+        containerPort: 80
         accessible-from:
           - minikube
+
+tests:
+  - name: func
+    containers:
+      - dir: tests/func
 
 env-types:
   - type-regex: '(?!prod).*'

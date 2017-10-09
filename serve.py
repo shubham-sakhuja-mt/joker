@@ -38,4 +38,4 @@ if __name__ == '__main__':
   app = web.application(urls, globals())
 
   ### start http server
-  web.httpserver.runsimple(app.wsgifunc(), ('0.0.0.0', 8080))
+  web.httpserver.runsimple(app.wsgifunc(), ('0.0.0.0', 80))
