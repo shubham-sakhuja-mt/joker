@@ -4,9 +4,11 @@ import os
 import json
 import web
 
+
 def load_jokes():
   global JOKES_LIST
   JOKES_LIST = json.load(open('jokes.json'))
+
 
 class health:
 

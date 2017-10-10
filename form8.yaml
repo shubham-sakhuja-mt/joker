@@ -1,29 +1,51 @@
+### this file configures this service for use by the form8 CLI to automate build/deploy/testing of it
+
+# general info for the service
 general:
   name: joker
 
+
+# components of the service
 components:
+  # a stateless component that serves jokes over http
+  # the hostname is the same as the below name, so 'web' in this case
   - name: web
     type: stateless
+    instances: 1 # this is the default
     containers:
+      # consists of a single container whose Dockerfile is in the same dir as this file
       - dir: .
+        # use this check to determine the health of each instance -- deployment only succeeds if this passes
         readyCheck:
           httpGet:
             port: 80
             path: /health
+    # expose container port 80 on host 'web' port 80 and create an external endpoint accessible from the network 'minikube'
     expose:
       - servicePort: 80
         containerPort: 80
         accessible-from:
           - minikube
 
+
+# tests that can be run against components of this service
+# a test succeeds if all container instances exit with status zero, else fails
 tests:
   - name: func
+    instances: 1 # this is the default
     containers:
+      # consists of a single container whose Dockerfile is in dir 'tests/func'
       - dir: tests/func
 
+
+# OPTIONAL section that configures the modifications that should take place to above config based on the environment type
+#   being deployed (value passed to --type option in deploy action)
+# each is only applied if the type matches the value of the 'types-regex' field
 env-types:
+  # apply if type is not equal to 'prod'
   - type-regex: '(?!prod).*'
     modifier:
+      # for all containers of all components, add the environment variable 'DEBUG' with value 'on'
       components:
         - name: .*
           containers:
