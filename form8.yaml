@@ -38,9 +38,9 @@ tests:
       - dir: tests/func
 
 
-# OPTIONAL section that configures the modifications that should take place to above config based on the environment type
-#   being deployed (value passed to --type option in deploy action)
-# each is only applied if the type matches the value of the 'types-regex' field
+# OPTIONAL section that configures the modifications that should take place to the above config based on the environment type
+#   being deployed (i.e. value passed to --type option of deploy action)
+# each is only applied if the type matches the value of the 'type-regex' field
 env-types:
   # apply if type is not equal to 'prod'
   - type-regex: '(?!prod).*'
