@@ -15,4 +15,4 @@ export FORM8_TAG=mytag
 export FORM8_ENVIRONMENT=myenv
 form8 build && form8 deploy && form8 test
 ```
-Note that each form8 action exists with status 0 if it completes successfully.
+Note that each form8 action exits with status 0 if it completes successfully.
