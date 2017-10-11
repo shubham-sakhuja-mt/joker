@@ -15,7 +15,7 @@ components:
     containers:
       # consists of a single container whose Dockerfile is in the same dir as this file
       - dir: .
-        # use this check to determine the health of each instance -- deployment only succeeds if this passes
+        # this check is run periodically to determine the health of each instance -- deployment only succeeds if this starts passing
         readyCheck:
           httpGet:
             port: 80
