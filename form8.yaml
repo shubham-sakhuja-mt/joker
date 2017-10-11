@@ -42,7 +42,7 @@ tests:
 #   being deployed (i.e. value passed to --type option of deploy action)
 # each is only applied if the type matches the value of the 'type-regex' field
 env-types:
-  # apply if type is not equal to 'prod'
+  # apply if type does not start with (or equal to) 'prod'
   - type-regex: '(?!prod).*'
     modifier:
       # for all containers of all components, add the environment variable 'DEBUG' with value 'on'
