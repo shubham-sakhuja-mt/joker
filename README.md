@@ -1,7 +1,8 @@
 # joker
-A simple example service configured to use form8, _joker_ consists of a single stateless component that serves jokes 
-as text strings and a functional test that ensures the service is working as expected. Please see the **form8.yaml** file 
-for details on how the service is configured.
+A simple example service configured to use form8, _joker_ consists of:
+- a stateless component that serves jokes over http
+- a functional test that ensures it is working as expected
+Please see the **form8.yaml** file for more details on how the above pieces are configured.
 
 Doing a build/deploy(or update)/test of this service (as well as any service configured with a form8.yaml file) is as easy as:
 ```bash
