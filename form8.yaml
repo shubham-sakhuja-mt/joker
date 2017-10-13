@@ -31,6 +31,7 @@ components:
 # tests that can be run against components of this service
 # a test succeeds if all container instances exit with status zero, else fails
 tests:
+  # functional test that simply curl's web:80/joke
   - name: func
     instances: 1 # this is the default
     containers:
