@@ -44,6 +44,7 @@ tests:
 env-types:
   # apply if type does not start with (or equal to) 'prod'
   - type-regex: '(?!prod).*'
+    # the modification to apply
     modifier:
       # for all containers of all components, add the environment variable 'DEBUG' with value 'on'
       components:
