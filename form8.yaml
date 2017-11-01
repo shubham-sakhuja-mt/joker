@@ -15,7 +15,7 @@ components:
     containers:
       # consists of a single container whose Dockerfile is in the same dir as this file
       - dir: .
-        # use this check to determine the health of each instance -- deployment only succeeds if this passes
+        # this check is run periodically to determine the health of each instance -- deployment only succeeds if this starts passing
         readyCheck:
           httpGet:
             port: 80
@@ -32,6 +32,7 @@ components:
 # tests that can be run against components of this service
 # a test succeeds if all container instances exit with status zero, else fails
 tests:
+  # functional test that simply curl's web:80/joke
   - name: func
     instances: 1 # this is the default
     containers:
@@ -43,8 +44,9 @@ tests:
 #   being deployed (i.e. value passed to --type option of deploy action)
 # each is only applied if the type matches the value of the 'type-regex' field
 env-types:
-  # apply if type is not equal to 'prod'
+  # apply if type does not start with (or equal to) 'prod'
   - type-regex: '(?!prod).*'
+    # the modification to apply
     modifier:
       # for all containers of all components, add the environment variable 'DEBUG' with value 'on'
       components:
