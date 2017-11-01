@@ -2,7 +2,7 @@
 
 # general info for the service
 general:
-  name: joker
+  name: form8joker
 
 
 # components of the service
@@ -26,6 +26,7 @@ components:
         containerPort: 80
         accessible-from:
           - minikube
+          - form8demo
 
 
 # tests that can be run against components of this service
@@ -38,7 +39,7 @@ tests:
       - dir: tests/func
 
 
-# OPTIONAL section that configures the modifications that should take place to the above config based on the environment type
+# OPTIONAL section that specifies the modifications that should take place to the above config based on the environment type
 #   being deployed (i.e. value passed to --type option of deploy action)
 # each is only applied if the type matches the value of the 'type-regex' field
 env-types:
