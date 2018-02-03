@@ -40,12 +40,10 @@ tests:
       - dir: tests/func
 
 
-# OPTIONAL section that specifies the modifications that should take place to the above config based on the environment type
-#   being deployed (i.e. value passed to --type option of deploy action)
-# each is only applied if the type matches the value of the 'type-regex' field
+# OPTIONAL section that specifies the types of environments that can be deployed as well as modifications that should take place to the above config for each
+#   The type is passed to the 'deploy' action via the '--type' argument
 env-types:
-  # apply if type does not start with (or equal to) 'prod'
-  - type-regex: '(?!prod).*'
+  - name: dev
     # the modification to apply
     modifier:
       # for all containers of all components, add the environment variable 'DEBUG' with value 'on'
