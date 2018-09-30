@@ -4,6 +4,7 @@ pipeline {
   environment {
     FORM8_TAG = "$BRANCH_NAME-$BUILD_ID"
     FORM8_ENVIRONMENT = "$BRANCH_NAME"
+    FORM8_ENV_TYPE = dev
   }
 
   stages {
