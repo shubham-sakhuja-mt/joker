@@ -11,7 +11,7 @@ components:
   # the hostname is the same as the below name, so 'web' in this case
   - name: web
     type: stateless
-    instances: 3 # this defaults to 1
+    instances: 2 # this defaults to 1
     containers:
       # consists of a single container whose Dockerfile is in the same dir as this file
       - dir: .
