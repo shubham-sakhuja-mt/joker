@@ -10,13 +10,11 @@ def load_jokes():
 
 
 class health:
-
   def GET(self):
     return ''
 
 
 class joke:
-
   def GET(self):
     if not JOKES_LIST:
       load_jokes()
@@ -34,7 +32,7 @@ if __name__ == '__main__':
   ### map uris to classes
   urls = (
     '/health', 'health',
-    '/joke', 'joke',
+    '/', 'joke',
   )
   app = web.application(urls, globals())
 

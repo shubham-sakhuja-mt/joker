@@ -3,6 +3,7 @@
 # general info for the service
 general:
   name: joker
+  default-env-type: dev
 
 
 # components of the service
