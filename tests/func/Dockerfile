@@ -1,5 +1,3 @@
-FROM centos:7
+FROM centos
 
-COPY run.sh /
-
-CMD bash /run.sh
+CMD curl -v --fail web

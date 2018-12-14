@@ -53,3 +53,8 @@ env-types:
             - name: .*
               envVars:
                 DEBUG: 'on'
+  - name: prod
+    modifier:
+      components:
+        - name: web
+          instances: 10
