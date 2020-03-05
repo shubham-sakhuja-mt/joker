@@ -12,7 +12,7 @@ components:
   # the hostname is the same as the below name, so 'web' in this case
   - name: web
     type: stateless
-    instances: 2 # this defaults to 1
+    instances: 4 # this defaults to 1
     containers:
       # consists of a single container whose Dockerfile is in the same dir as this file
       - dir: .
@@ -21,6 +21,12 @@ components:
           httpGet:
             port: 80
             path: /health
+        # run this before terminating the container (for any reason)
+        lifecycle:
+          stop:
+            httpGet:
+              port: 80
+              path: /goodbye
     # expose container port 80 on host 'web' port 80 and create an external endpoint accessible from the network 'minikube'
     expose:
       - servicePort: 80
@@ -38,6 +44,12 @@ tests:
     containers:
       # consists of a single container whose Dockerfile is in dir 'tests/func'
       - dir: tests/func
+  # a test that puts some light load on the web service
+  - name: load
+    containers:
+      - dir: tests/load
+        envVars:
+          ITERS: '45'
 
 
 # OPTIONAL section that specifies the types of environments that can be deployed as well as modifications that should take place to the above config for each
@@ -57,4 +69,4 @@ env-types:
     modifier:
       components:
         - name: web
-          instances: 10
+          instances: 8
