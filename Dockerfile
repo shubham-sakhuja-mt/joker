@@ -1,8 +1,7 @@
-FROM python:2.7.10
+FROM python:2.7.12
 
 RUN pip install web.py
 
-COPY ./ /app/
-WORKDIR /app
+COPY jokes.json serve.py ./
 
-CMD python -u /app/serve.py
+CMD exec python -u serve.py
