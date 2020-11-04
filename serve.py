@@ -1,14 +1,14 @@
-#!/usr/bin/python -u
-
 import os
 import json
 import socket
 import datetime
 import web
+import random
 
 def load_jokes():
   global JOKES_LIST
   JOKES_LIST = json.load(open('jokes.json'))
+  random.shuffle(JOKES_LIST)
 
 
 # Endpoints
@@ -19,7 +19,7 @@ class health:
 class hello:
   def GET(self):
     return json.dumps({
-      'msg': 'hello hello from ' + HOST, 
+      'msg': 'hello from ' + HOST, 
       'date': str(datetime.datetime.now())
     })
 
@@ -45,6 +45,16 @@ class goodbye:
     print(msg)
     return msg
 
+class load:
+  def GET(self):
+    params = web.input(t=10000000)
+    for x in range(int(params.t)):
+      x*x
+    return json.dumps({
+      'msg': 'load completed',
+      'date': str(datetime.datetime.now())
+    })
+
 if __name__ == '__main__':
 
   JOKES_LIST = []
@@ -53,10 +63,11 @@ if __name__ == '__main__':
 
   ### map uris to classes
   urls = (
-    '/health', 'health',
-    '/hello', 'hello',
-    '/', 'joke',
+    '/', 'hello',
+    '/joke', 'joke',
     '/goodbye', 'goodbye',
+    '/health', 'health',
+    '/load', 'load',
   )
   app = web.application(urls, globals())
 
