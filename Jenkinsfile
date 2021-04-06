@@ -11,8 +11,10 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        docker.withRegistry('', 'reg-creds') {
-          sh 'f8 build --push'
+        script {
+          docker.withRegistry('', 'reg-creds') {
+            sh 'f8 build --push'
+          }
         }
       }
     }
