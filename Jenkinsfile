@@ -11,7 +11,7 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        withDockerRegistry([url: 'https://gcr.io', credentialsId: 'gcr']) {
+        withDockerRegistry([url: '', credentialsId: 'reg-creds']) {
           sh 'f8 build --push'
         }
       }
