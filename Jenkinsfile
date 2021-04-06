@@ -12,7 +12,7 @@ pipeline {
     stage('Build') {
       steps {
         script {
-          docker.withRegistry('', 'reg-creds') {
+          docker.withRegistry('https://gcr.io', 'gcr') {
             sh 'f8 build --push'
           }
         }
