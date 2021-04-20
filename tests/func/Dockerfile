@@ -1,3 +1,3 @@
 FROM centos
 
-CMD curl -v --fail joker/joke | grep '"joke":'
+CMD curl joker/joke && curl -v --fail joker/joke | grep '"joke":'
