@@ -1,7 +1,7 @@
 FROM centos:8
 
 RUN yum install -y python3-pip
-RUN pip3 install web.py
+RUN pip3 install web.py requests
 
 COPY serve.py ./
 
