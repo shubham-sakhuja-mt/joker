@@ -1,6 +1,6 @@
 FROM python
 
-RUN pip install web.py
+RUN python3 -m pip install web.py==0.62 requests
 
 COPY jokes.json serve.py ./
 
