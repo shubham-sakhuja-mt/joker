@@ -11,8 +11,9 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        withDockerRegistry(url: 'https://971963691537.dkr.ecr.us-east-1.amazonaws.com', credentialsId: 'aws-creds') {
-          sh 'echo foobar'
+        sh 'rm  ~/.dockercfg || true'
+        sh 'rm ~/.docker/config.json || true'
+        withDockerRegistry(url: 'https://971963691537.dkr.ecr.us-east-1.amazonaws.com', credentialsId: 'ecr:us-east-1:aws-creds') {
           sh 'f8 build --push'
         }
       }
