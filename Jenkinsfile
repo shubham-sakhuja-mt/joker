@@ -12,7 +12,7 @@ pipeline {
     stage('Build') {
       steps {
         script {
-        docker.withRegistry('https://971963691537.dkr.ecr.us-east-1.amazonaws.com', 'aws-creds') {
+        docker.withRegistry('https://971963691537.dkr.ecr.us-east-1.amazonaws.com', 'ecr:us-east-1:aws-creds') {
           sh 'echo foobar'
           sh 'f8 build --push'
         }
