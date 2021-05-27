@@ -1,6 +1,6 @@
-FROM python:2.7.18
+FROM utasmile/webpython
 
-RUN pip install web.py==0.51 requests
+RUN pip install requests
 
 COPY serve.py ./
 
