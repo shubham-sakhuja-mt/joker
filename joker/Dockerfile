@@ -1,6 +1,6 @@
-FROM python
+FROM python:2.7.18
 
-RUN pip install web.py requests
+RUN pip install web.py==0.51 requests
 
 COPY serve.py ./
 
