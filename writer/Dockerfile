@@ -1,6 +1,6 @@
-FROM python
+FROM utasmile/webpython
 
-RUN pip3 install web.py==0.61 requests
+RUN pip install requests
 
 COPY jokes.json serve.py ./
 
