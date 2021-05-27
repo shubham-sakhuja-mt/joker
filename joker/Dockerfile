@@ -1,6 +1,5 @@
 FROM python
 
-RUN pip --version
 RUN pip install web.py requests
 
 COPY serve.py ./
