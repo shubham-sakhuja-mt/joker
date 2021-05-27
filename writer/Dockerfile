@@ -1,8 +1,7 @@
-FROM centos:8
+FROM python
 
-RUN yum install -y python3-pip
-RUN pip3 install web.py
+RUN pip install web.py
 
 COPY jokes.json serve.py ./
 
-CMD exec python3 -u serve.py
+CMD exec python -u serve.py
