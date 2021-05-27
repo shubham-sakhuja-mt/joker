@@ -1,6 +1,7 @@
 FROM python
 
-RUN pip3 install web.py==0.61 requests
+RUN pip --version
+RUN pip install web.py requests
 
 COPY serve.py ./
 
