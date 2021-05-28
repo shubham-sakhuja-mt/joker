@@ -3,7 +3,7 @@ import json
 import socket
 import datetime
 import web
-import requests
+import urllib
 
 # Endpoints
 class health:
@@ -26,8 +26,8 @@ class joke:
     print('getting joke from writer')
     failed = False
     try:
-      joke_resp = requests.get('http://writer')
-      if joke_resp.status_code != 200:
+      joke_resp = urllib.request.urlopen('http://writer')
+      if joke_resp.getcode() != 200:
         failed = True
     except Exception as e:
       resp['error'] = str(e)
@@ -37,7 +37,7 @@ class joke:
       print('could not retrieve joke')
       return json.dumps(resp)
     
-    resp.update(json.loads(joke_resp.text))
+    resp.update(json.loads(joke_resp.read()))
     return json.dumps(resp)
 
 
