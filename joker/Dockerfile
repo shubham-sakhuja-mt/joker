@@ -1,4 +1,4 @@
-FROM utasmile/webpython
+FROM 3dpro/webpy
 
 RUN pip install requests
 
