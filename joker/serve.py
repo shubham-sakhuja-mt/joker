@@ -3,7 +3,7 @@ import json
 import socket
 import datetime
 import web
-import urllib.request
+import urllib2
 
 # Endpoints
 class health:
