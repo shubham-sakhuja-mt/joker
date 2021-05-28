@@ -26,7 +26,7 @@ class joke:
     print('getting joke from writer')
     failed = False
     try:
-      joke_resp = urllib.request.urlopen('http://writer')
+      joke_resp = urllib2.urlopen('http://writer')
       if joke_resp.getcode() != 200:
         failed = True
     except Exception as e:
